@@ -114,7 +114,7 @@ const config = {
     },
     [ItemType.Hair]: {
       key: ItemType.Hair,
-      zIndex: 20,
+      zIndex: 40,
       name: "Hair",
       order: [
         ItemID.LongHair,
@@ -195,7 +195,7 @@ const config = {
     },
     [ItemType.FacialHair]: {
       key: ItemType.FacialHair,
-      zIndex: 20,
+      zIndex: 30,
       name: "Facial Hair",
       order: [
         ItemID.NoneFacialHair,
@@ -221,7 +221,7 @@ const config = {
     },
     [ItemType.Clothes]: {
       key: ItemType.Clothes,
-      zIndex: 20,
+      zIndex: 30,
       name: "Clothes",
       order: [
         ItemID.NoneClothes,
@@ -246,7 +246,7 @@ const config = {
     },
     [ItemType.Tattoos]: {
       key: ItemType.Tattoos,
-      zIndex: 30,
+      zIndex: 20,
       name: "Tattoos",
       order: [
         ItemID.NoneTattoos,
