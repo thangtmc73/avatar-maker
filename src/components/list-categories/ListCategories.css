@@ -1,0 +1,21 @@
+.list-categories {
+  width: 100%;
+  display: flex;
+  background-color: #ffad8c;
+  overflow-x: scroll;
+}
+
+.list-categories > .category {
+  height: 40px;
+  width: auto;
+  padding: 10px 10px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #ffad8c;
+  color: white;
+}
+
+.list-categories > .category.selected {
+  background-color: #ff8554;
+}
