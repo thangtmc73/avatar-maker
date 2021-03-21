@@ -1,20 +1,28 @@
 import "./PreviewView.css";
 import Item from "./Item";
-import { ItemType, ItemID } from "../../consts";
+import { ItemType } from "../../consts";
+import { useSelectedItems } from "../../AppContext";
 
 function PreviewView() {
+  const selectedItems = useSelectedItems();
   return (
     <div className="preview-view">
-      <Item type={ItemType.Hair} id={ItemID.LongCurlyHair} />
-      <Item type={ItemType.Eyebrows} id={ItemID.SadEyebrows} />
-      <Item type={ItemType.Eyes} id={ItemID.CryEyes} />
-      <Item type={ItemType.Accesories} id={ItemID.Earing1Accesories} />
-      <Item type={ItemType.Tattoos} id={ItemID.ThroatTattoos} />
-      <Item type={ItemType.FacialHair} id={ItemID.FancyFacialHair} />
-      <Item type={ItemType.Mouth} id={ItemID.SmileMouth} />
-      <Item type={ItemType.Body} id={ItemID.DefaultBody} />
-      <Item type={ItemType.Glasses} id={ItemID.NerdGlasses} />
-      <Item type={ItemType.Clothes} id={ItemID.HoodieClothes} />
+      <Item type={ItemType.Hair} id={selectedItems[ItemType.Hair]} />
+      <Item type={ItemType.Eyebrows} id={selectedItems[ItemType.Eyebrows]} />
+      <Item type={ItemType.Eyes} id={selectedItems[ItemType.Eyes]} />
+      <Item
+        type={ItemType.Accesories}
+        id={selectedItems[ItemType.Accesories]}
+      />
+      <Item type={ItemType.Tattoos} id={selectedItems[ItemType.Tattoos]} />
+      <Item
+        type={ItemType.FacialHair}
+        id={selectedItems[ItemType.FacialHair]}
+      />
+      <Item type={ItemType.Mouth} id={selectedItems[ItemType.Mouth]} />
+      <Item type={ItemType.Body} id={selectedItems[ItemType.Body]} />
+      <Item type={ItemType.Glasses} id={selectedItems[ItemType.Glasses]} />
+      <Item type={ItemType.Clothes} id={selectedItems[ItemType.Clothes]} />
     </div>
   );
 }
