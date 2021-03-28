@@ -8,6 +8,6 @@ My repo is just a simple React app which reproduce the original repo.
 
 ## Tasks
 
-- [ ] Change items in the preview view
+- [x] Change items in the preview view
 - [ ] Allow download avatar
 - [ ] Change items colors
