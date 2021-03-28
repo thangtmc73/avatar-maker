@@ -5,7 +5,7 @@ const UPDATE_CATEGORY = "UPDATE_CATEGORY";
 const UPDATE_ITEM = "UPDATE_ITEM";
 
 const initialState = {
-  selectedCategory: ItemType.Eyes,
+  selectedCategory: ItemType.Body,
   mapSelectedItem: {
     [ItemType.Body]: ItemID.DefaultBody,
     [ItemType.Eyes]: ItemID.DefaultEyes,
