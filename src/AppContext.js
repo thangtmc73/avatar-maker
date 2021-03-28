@@ -1,6 +1,8 @@
 import React from "react";
 import { ItemType, ItemID } from "./consts";
 
+const UPDATE_ITEM = "UPDATE_ITEM";
+
 const initialState = {
   selectedCategory: ItemType.Eyes,
   mapSelectedItem: {
@@ -20,8 +22,19 @@ const initialState = {
 const AppContext = React.createContext(initialState);
 
 function appReducer(state, action) {
-  const { type } = action;
+  const { type, payload } = action;
   switch (type) {
+    case UPDATE_ITEM: {
+      const { categoryId, itemId } = payload;
+      const { mapSelectedItem } = state;
+      return {
+        ...state,
+        mapSelectedItem: {
+          ...mapSelectedItem,
+          [categoryId]: itemId,
+        },
+      };
+    }
     default: {
       return state;
     }
@@ -52,4 +65,28 @@ function useSelectedCategory() {
   return selectedCategory;
 }
 
-export { AppProvider, useSelectedItems, useSelectedCategory };
+function useDispatch() {
+  const { dispatch } = React.useContext(AppContext);
+  if (dispatch === undefined) {
+    throw new Error("dispatch must be used within a AppProvider");
+  }
+  return dispatch;
+}
+
+function updateItem({ categoryId, itemId }) {
+  return {
+    type: UPDATE_ITEM,
+    payload: {
+      categoryId,
+      itemId,
+    },
+  };
+}
+
+export {
+  AppProvider,
+  useSelectedItems,
+  useSelectedCategory,
+  useDispatch,
+  updateItem,
+};
