@@ -1,6 +1,11 @@
 import Config from "../../config";
 import "./ListItems.css";
-import { useSelectedCategory, useSelectedItems } from "../../AppContext";
+import {
+  useSelectedCategory,
+  useSelectedItems,
+  useDispatch,
+  updateItem,
+} from "../../AppContext";
 
 const { item_info, category_info } = Config;
 
@@ -9,15 +14,11 @@ function ListItems() {
   const selectedItems = useSelectedItems();
   const selectedItemId = selectedItems[selectedCategoryId];
   const category = category_info[selectedCategoryId];
+  const dispatch = useDispatch();
+
   if (!category) {
     return null;
   }
-  console.log(
-    "-----selectedItemId",
-    selectedItems,
-    selectedCategoryId,
-    selectedItemId
-  );
   const { order } = category;
   if (!order || !order.length) {
     return null;
@@ -28,10 +29,20 @@ function ListItems() {
       {order.map((itemId) => {
         const item = item_info[itemId] || {};
         const { name, component: SVGImage } = item;
+
+        function handleClick() {
+          dispatch(
+            updateItem({
+              categoryId: selectedCategoryId,
+              itemId: itemId,
+            })
+          );
+        }
         return (
           <div
             className={`item ${selectedItemId === itemId ? "selected" : ""}`}
             key={itemId}
+            onClick={handleClick}
           >
             <SVGImage />
             <span>{name}</span>
