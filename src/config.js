@@ -189,7 +189,6 @@ const config = {
         ItemID.GrimaceMouth,
         ItemID.EatingMouth,
         ItemID.DisbeliefMouth,
-        ItemID.DefaultMouth,
         ItemID.ConcernedMouth,
       ],
     },
