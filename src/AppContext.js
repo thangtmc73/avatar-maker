@@ -1,6 +1,7 @@
 import React from "react";
 import { ItemType, ItemID } from "./consts";
 
+const UPDATE_CATEGORY = "UPDATE_CATEGORY";
 const UPDATE_ITEM = "UPDATE_ITEM";
 
 const initialState = {
@@ -24,6 +25,12 @@ const AppContext = React.createContext(initialState);
 function appReducer(state, action) {
   const { type, payload } = action;
   switch (type) {
+    case UPDATE_CATEGORY: {
+      return {
+        ...state,
+        selectedCategory: payload,
+      };
+    }
     case UPDATE_ITEM: {
       const { categoryId, itemId } = payload;
       const { mapSelectedItem } = state;
@@ -73,6 +80,13 @@ function useDispatch() {
   return dispatch;
 }
 
+function updateCategory(categoryId) {
+  return {
+    type: UPDATE_CATEGORY,
+    payload: categoryId,
+  };
+}
+
 function updateItem({ categoryId, itemId }) {
   return {
     type: UPDATE_ITEM,
@@ -89,4 +103,5 @@ export {
   useSelectedCategory,
   useDispatch,
   updateItem,
+  updateCategory,
 };
