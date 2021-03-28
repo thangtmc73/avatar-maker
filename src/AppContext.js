@@ -35,20 +35,20 @@ function AppProvider({ children }) {
 }
 
 function useSelectedItems() {
-  const context = React.useContext(AppContext);
-  if (context === undefined) {
-    throw new Error("useCount must be used within a CountProvider");
+  const { state } = React.useContext(AppContext);
+  if (state === undefined) {
+    throw new Error("state must be used within a AppProvider");
   }
-  const { mapSelectedItem } = context;
+  const { mapSelectedItem } = state;
   return mapSelectedItem;
 }
 
 function useSelectedCategory() {
-  const context = React.useContext(AppContext);
-  if (context === undefined) {
-    throw new Error("useCount must be used within a CountProvider");
+  const { state } = React.useContext(AppContext);
+  if (state === undefined) {
+    throw new Error("state must be used within a AppProvider");
   }
-  const { selectedCategory } = context;
+  const { selectedCategory } = state;
   return selectedCategory;
 }
 
